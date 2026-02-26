@@ -1,0 +1,179 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EO Emotions - test</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100..800&family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
+
+    <style>
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans Condensed;
+        font-style: normal;
+        font-weight: 400;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Regular.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Regular.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Regular.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Regular.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Regular.svg#Instrument_Sans_Condensed) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans Condensed;
+        font-style: normal;
+        font-weight: 500;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Medium.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Medium.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Medium.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Medium.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-Medium.svg#Instrument_Sans_Condensed) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans Condensed;
+        font-style: normal;
+        font-weight: 600;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-SemiBold.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-SemiBold.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-SemiBold.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-SemiBold.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansCondensed-SemiBold.svg#Instrument_Sans_Condensed) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans SemiCondensed;
+        font-style: normal;
+        font-weight: 400;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Regular.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Regular.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Regular.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Regular.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Regular.svg#Instrument_Sans_SemiCondensed) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans SemiCondensed;
+        font-style: normal;
+        font-weight: 500;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Medium.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Medium.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Medium.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Medium.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Medium.svg#Instrument_Sans_SemiCondensed) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans SemiCondensed;
+        font-style: normal;
+        font-weight: 600;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Bold.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Bold.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Bold.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Bold.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSansSemiCondensed-Bold.svg#Instrument_Sans_SemiCondensed) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans;
+        font-style: normal;
+        font-weight: 400;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Regular.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Regular.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Regular.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Regular.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Regular.svg#Instrument_Sans) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans;
+        font-style: normal;
+        font-weight: 500;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Medium.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Medium.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Medium.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Medium.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Medium.svg#Instrument_Sans) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Instrument Sans;
+        font-style: normal;
+        font-weight: 600;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Bold.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Bold.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Bold.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Bold.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/InstrumentSans-Bold.svg#Instrument_Sans) format("svg");
+      }
+
+      @font-face {
+        font-display: swap;
+        font-family: Libre Baskerville;
+        font-style: normal;
+        font-weight: 400;
+        src:
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/LibreBaskerville-Regular.eot?) format("eot"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/LibreBaskerville-Regular.woff2) format("woff2"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/LibreBaskerville-Regular.woff) format("woff"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/LibreBaskerville-Regular.ttf) format("truetype"),
+          url(https://www.elobservador.com.uy/css-custom/elobservador/fonts/LibreBaskerville-Regular.svg#Libre_Baskerville) format("svg");
+      }
+
+      body {
+        margin: 0;
+        padding: 50px;
+      }
+    </style>
+
+    <!-- script de EO para probar Google analytics -->
+    <script xmlns:deferer="no" async src="https://www.googletagmanager.com/gtag/js?id=G-R75TH74BCK"></script>
+    <script xmlns:deferer="no">
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+      gtag("config", "G-R75TH74BCK", { debug_mode: true });
+      gtag("set", {
+        dimension1: "El Observador: Noticias de Argentina y del mundo",
+        dimension2: "",
+        dimension3: "page",
+        dimension4: "",
+        dimension5: "",
+        dimension6: "",
+        dimension7: "",
+        dimension8: "",
+        dimension9: "",
+      });
+    </script>
+  </head>
+
+  <body>
+    <eo-emotions id-nota="3231"></eo-emotions>
+    <script type="module" src="/src/main.js"></script>
+
+    <!-- <script type="module" src="https://especiales.elobservador.com.uy/interactivo/webcomponents/acordeon/eo-acordeon.js"></script> -->
+  </body>
+</html>

@@ -1,0 +1,25 @@
+{
+  "name": "my-svelte-counter",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && node upload-to-ftp && node upload-to-ftp-quorum.js",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "^2.4.2",
+    "sass": "^1.75.0",
+    "svelte": "^4.0.5",
+    "svelte-preprocess": "^5.1.4",
+    "vite": "^4.4.5"
+  },
+  "dependencies": {
+    "basic-ftp": "^5.0.5",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "url": "^0.11.4",
+    "vite-plugin-full-reload": "^1.2.0"
+  }
+}

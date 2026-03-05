@@ -133,17 +133,17 @@
 <div class="EO-emotions-container" bind:this={containerEl}>
   {#if votoActual}
     <div class="result">
-      ¡<b>{userPercentResult}%</b> de las personas piensan cómo vos!
+      ¡<b>{userPercentResult}%</b> de las personas reaccionaron cómo vos!
     </div>
   {/if}
   <div class="icons" class:voted={votoActual !== null}>
-    <button class="emoji" class:selected={votoActual === "happy"} class:inactive={votoActual !== null && votoActual !== "happy"} on:click={() => handleClick("happy")}>😍</button>
+    <button class="emoji" class:selected={votoActual === "happy"} class:inactive={votoActual !== null && votoActual !== "happy"} on:click|stopPropagation={() => handleClick("happy")}>😍</button>
 
-    <button class="emoji" class:selected={votoActual === "like"} class:inactive={votoActual !== null && votoActual !== "like"} on:click={() => handleClick("like")}>👍</button>
+    <button class="emoji" class:selected={votoActual === "like"} class:inactive={votoActual !== null && votoActual !== "like"} on:click|stopPropagation={() => handleClick("like")}>👍</button>
 
-    <button class="emoji" class:selected={votoActual === "dislike"} class:inactive={votoActual !== null && votoActual !== "dislike"} on:click={() => handleClick("dislike")}>👎</button>
+    <button class="emoji" class:selected={votoActual === "dislike"} class:inactive={votoActual !== null && votoActual !== "dislike"} on:click|stopPropagation={() => handleClick("dislike")}>👎</button>
 
-    <button class="emoji" class:selected={votoActual === "angry"} class:inactive={votoActual !== null && votoActual !== "angry"} on:click={() => handleClick("angry")}>😡</button>
+    <button class="emoji" class:selected={votoActual === "angry"} class:inactive={votoActual !== null && votoActual !== "angry"} on:click|stopPropagation={() => handleClick("angry")}>😡</button>
   </div>
 </div>
 
@@ -169,10 +169,15 @@
       font-size: 15px;
       position: absolute;
       border-bottom-left-radius: 0;
-      top: -50px;
-      width: 285px;
-      padding: 8px 10px;
-      padding-bottom: 10px;
+      top: -46px;
+      width: 380px;
+      padding: 6px 10px;
+      padding-bottom: 6px;
+
+      @container (max-width: 390px) {
+        width: 325px;
+        font-size: 14px;
+      }
     }
 
     div.icons {

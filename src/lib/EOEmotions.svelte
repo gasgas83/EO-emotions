@@ -17,6 +17,7 @@
   let votoActual = null;
   let userPercentResult = 0;
   let containerEl; // referencia al propio elemento
+  const article = document.getElementById("article");
 
   onMount(async () => {
     // Subimos al host del web component (el <eo-emotions> en el DOM)
@@ -28,6 +29,31 @@
     if (votoActual && registro) {
       setResult(votoActual);
     }
+
+    const host = containerEl.closest("eo-emotions");
+
+    if (host) {
+      host.addEventListener(
+        "click",
+        (e) => {
+          e.stopImmediatePropagation();
+          e.stopPropagation();
+        },
+        true,
+      ); // <-- capture: true, intercepta ANTES de que baje al DOM
+    }
+
+    // ── Fallback: interceptar en el article si viene de eo-emotions ──
+    article.addEventListener(
+      "click",
+      (e) => {
+        if (e.target.closest("eo-emotions")) {
+          e.stopPropagation();
+          e.stopImmediatePropagation();
+        }
+      },
+      true,
+    );
   });
 
   const trackGA = (event) => {
@@ -130,7 +156,7 @@
   }
 </script>
 
-<div class="EO-emotions-container" bind:this={containerEl}>
+<div class="EO-emotions-container" bind:this={containerEl} on:click|stopPropagation>
   {#if votoActual}
     <div class="result">
       ¡<b>{userPercentResult}%</b> de las personas reaccionaron cómo vos!

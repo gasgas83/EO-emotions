@@ -13,6 +13,7 @@
   const API_URL = "https://strapi.elobservador.com.uy/api/eo-emotions";
 
   let idNota = "";
+  let tituloNota = "";
   let registro = null;
   let votoActual = null;
   let userPercentResult = 0;
@@ -22,6 +23,7 @@
   onMount(async () => {
     // Subimos al host del web component (el <eo-emotions> en el DOM)
     idNota = containerEl.closest("eo-emotions")?.getAttribute("id-nota") ?? containerEl.getRootNode()?.host?.getAttribute("id-nota") ?? "";
+    tituloNota = containerEl.closest("eo-emotions")?.getAttribute("titulo-nota") ?? containerEl.getRootNode()?.host?.getAttribute("titulo-nota") ?? "";
 
     votoActual = localStorage.getItem(`eo-emotions-${idNota}`);
     registro = await fetchNota(idNota);
@@ -29,31 +31,6 @@
     if (votoActual && registro) {
       setResult(votoActual);
     }
-
-    const host = containerEl.closest("eo-emotions");
-
-    if (host) {
-      host.addEventListener(
-        "click",
-        (e) => {
-          e.stopImmediatePropagation();
-          e.stopPropagation();
-        },
-        true,
-      ); // <-- capture: true, intercepta ANTES de que baje al DOM
-    }
-
-    // ── Fallback: interceptar en el article si viene de eo-emotions ──
-    article.addEventListener(
-      "click",
-      (e) => {
-        if (e.target.closest("eo-emotions")) {
-          e.stopPropagation();
-          e.stopImmediatePropagation();
-        }
-      },
-      true,
-    );
   });
 
   const trackGA = (event) => {
@@ -90,7 +67,7 @@
     const body = {
       data: {
         idNota,
-        tituloNota: "",
+        tituloNota,
         happy: emocion === "happy" ? 1 : 0,
         like: emocion === "like" ? 1 : 0,
         dislike: emocion === "dislike" ? 1 : 0,
@@ -156,20 +133,20 @@
   }
 </script>
 
-<div class="EO-emotions-container" bind:this={containerEl} on:click|stopPropagation>
+<div class="EO-emotions-container" bind:this={containerEl}>
   {#if votoActual}
     <div class="result">
       ¡<b>{userPercentResult}%</b> de las personas reaccionaron cómo vos!
     </div>
   {/if}
   <div class="icons" class:voted={votoActual !== null}>
-    <button class="emoji" class:selected={votoActual === "happy"} class:inactive={votoActual !== null && votoActual !== "happy"} on:click|stopPropagation={() => handleClick("happy")}>😍</button>
+    <button class="emoji" class:selected={votoActual === "happy"} class:inactive={votoActual !== null && votoActual !== "happy"} on:click|stopPropagation|preventDefault={() => handleClick("happy")}>😍</button>
 
-    <button class="emoji" class:selected={votoActual === "like"} class:inactive={votoActual !== null && votoActual !== "like"} on:click|stopPropagation={() => handleClick("like")}>👍</button>
+    <button class="emoji" class:selected={votoActual === "like"} class:inactive={votoActual !== null && votoActual !== "like"} on:click|stopPropagation|preventDefault={() => handleClick("like")}>👍</button>
 
-    <button class="emoji" class:selected={votoActual === "dislike"} class:inactive={votoActual !== null && votoActual !== "dislike"} on:click|stopPropagation={() => handleClick("dislike")}>👎</button>
+    <button class="emoji" class:selected={votoActual === "dislike"} class:inactive={votoActual !== null && votoActual !== "dislike"} on:click|stopPropagation|preventDefault={() => handleClick("dislike")}>👎</button>
 
-    <button class="emoji" class:selected={votoActual === "angry"} class:inactive={votoActual !== null && votoActual !== "angry"} on:click|stopPropagation={() => handleClick("angry")}>😡</button>
+    <button class="emoji" class:selected={votoActual === "angry"} class:inactive={votoActual !== null && votoActual !== "angry"} on:click|stopPropagation|preventDefault={() => handleClick("angry")}>😡</button>
   </div>
 </div>
 

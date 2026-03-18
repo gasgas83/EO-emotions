@@ -7,6 +7,7 @@
 
 <script>
   import { onMount } from "svelte";
+  import { fade } from "svelte/transition";
 
   export let noteId = "";
 
@@ -17,8 +18,8 @@
   let registro = null;
   let votoActual = null;
   let userPercentResult = 0;
+  let mostrarResultado = false;
   let containerEl; // referencia al propio elemento
-  const article = document.getElementById("article");
 
   onMount(async () => {
     // Subimos al host del web component (el <eo-emotions> en el DOM)
@@ -33,19 +34,7 @@
     }
   });
 
-  const trackGA = (event) => {
-    let action;
-
-    if (event == "happy") {
-      action = "happy";
-    } else if (event == "angry") {
-      action = "angry";
-    } else if (event == "like") {
-      action = "like";
-    } else if (event == "dislike") {
-      action = "dislike";
-    }
-
+  const trackGA = (action) => {
     gtag("event", "eo_components", {
       event_category: "emotions",
       event_action: action,
@@ -113,20 +102,21 @@
     if (votoActual) return;
 
     try {
+      let res;
       if (!registro) {
-        await crearNota(emocion);
+        res = await crearNota(emocion);
       } else {
-        await actualizarNota(emocion);
+        res = await actualizarNota(emocion);
       }
 
       trackGA(emocion);
 
-      // Refrescamos el registro desde Strapi para tener los valores reales
-      registro = await fetchNota(idNota);
-
+      registro = res.data;
       localStorage.setItem(`eo-emotions-${idNota}`, emocion);
       votoActual = emocion;
       setResult(emocion);
+      mostrarResultado = true;
+      setTimeout(() => { mostrarResultado = false; }, 30000);
     } catch (error) {
       console.error("Error al votar:", error);
     }
@@ -134,8 +124,8 @@
 </script>
 
 <div class="EO-emotions-container" bind:this={containerEl}>
-  {#if votoActual}
-    <div class="result">
+  {#if mostrarResultado}
+    <div class="result" transition:fade={{ duration: 800 }}>
       ¡<b>{userPercentResult}%</b> de las personas reaccionaron cómo vos!
     </div>
   {/if}
@@ -151,8 +141,6 @@
 </div>
 
 <style lang="scss">
-  @import url("https://fonts.googleapis.com/css2?family=Anek+Latin:wght@100..800&display=swap");
-
   .EO-emotions-container {
     font-family: "Anek Latin", sans-serif;
     background-color: transparent;
@@ -179,6 +167,12 @@
 
       @container (max-width: 390px) {
         width: 325px;
+        font-size: 14px;
+      }
+
+      @media (max-width: 640px) {
+        width: 86vw;
+        text-align: center;
         font-size: 14px;
       }
     }

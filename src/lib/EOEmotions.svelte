@@ -116,7 +116,9 @@
       votoActual = emocion;
       setResult(emocion);
       mostrarResultado = true;
-      setTimeout(() => { mostrarResultado = false; }, 30000);
+      setTimeout(() => {
+        mostrarResultado = false;
+      }, 30000);
     } catch (error) {
       console.error("Error al votar:", error);
     }
@@ -174,6 +176,10 @@
         width: 86vw;
         text-align: center;
         font-size: 14px;
+      }
+
+      @media (max-width: 350px) {
+        font-size: 13px;
       }
     }
 

@@ -18,7 +18,6 @@
   let registro = null;
   let votoActual = null;
   let userPercentResult = 0;
-  let mostrarResultado = false;
   let containerEl; // referencia al propio elemento
 
   onMount(async () => {
@@ -115,10 +114,6 @@
       localStorage.setItem(`eo-emotions-${idNota}`, emocion);
       votoActual = emocion;
       setResult(emocion);
-      mostrarResultado = true;
-      setTimeout(() => {
-        mostrarResultado = false;
-      }, 30000);
     } catch (error) {
       console.error("Error al votar:", error);
     }
@@ -126,7 +121,7 @@
 </script>
 
 <div class="EO-emotions-container" bind:this={containerEl}>
-  {#if mostrarResultado}
+  {#if votoActual}
     <div class="result" transition:fade={{ duration: 800 }}>
       ¡<b>{userPercentResult}%</b> de las personas reaccionaron cómo vos!
     </div>
@@ -160,9 +155,9 @@
       border-radius: 15px;
       font-family: "Instrument Sans", sans-serif;
       font-size: 15px;
-      position: absolute;
       border-bottom-left-radius: 0;
-      top: -46px;
+      // top: -46px;
+      // position: absolute;
       width: 380px;
       padding: 6px 10px;
       padding-bottom: 6px;
@@ -185,7 +180,7 @@
 
     div.icons {
       display: flex;
-      gap: 15px;
+      gap: 15px 8px;
 
       .emoji {
         cursor: pointer;

@@ -138,6 +138,13 @@
 </div>
 
 <style lang="scss">
+  :global(eo-emotions) {
+    display: block;
+    width: 100%;
+    max-width: 100%;
+    container-type: inline-size;
+  }
+
   .EO-emotions-container {
     font-family: "Anek Latin", sans-serif;
     background-color: transparent;
@@ -162,19 +169,22 @@
       padding: 6px 10px;
       padding-bottom: 6px;
 
-      @container (max-width: 390px) {
-        width: 325px;
-        font-size: 14px;
-      }
+      // @container (max-width: 390px) {
+      //   width: 325px;
+      //   font-size: 14px;
+      // }
 
-      @media (max-width: 640px) {
-        width: 86vw;
+      @container (min-width: 321px) and (max-width: 640px) {
+        width: 310px;
         text-align: center;
         font-size: 14px;
+        margin-bottom: 10px;
       }
 
-      @media (max-width: 350px) {
-        font-size: 13px;
+      @container (max-width: 330px) {
+        font-size: 12px;
+        width: 100%;
+        margin-bottom: 10px;
       }
     }
 
